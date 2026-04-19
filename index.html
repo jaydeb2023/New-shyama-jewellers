@@ -169,27 +169,66 @@
     overflow: hidden;
   }
 
-  .hero-bg {
+  /* ── HERO VIDEO ── */
+  .hero-video {
     position: absolute;
     inset: 0;
-    background: 
-      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
-      linear-gradient(135deg, var(--deep) 0%, var(--warm) 40%, #3D2800 100%);
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
   }
 
+  .hero-video video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    filter: brightness(0.45) saturate(0.85);
+  }
+
+  /* Dark gold cinematic overlay on top of video */
+  .hero-video::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(to bottom, rgba(26,18,8,0.55) 0%, rgba(26,18,8,0.2) 40%, rgba(26,18,8,0.6) 100%),
+      radial-gradient(ellipse 70% 50% at 50% 40%, rgba(201,168,76,0.07) 0%, transparent 70%);
+    z-index: 1;
+  }
+
+  /* Subtle diagonal gold pattern on top */
   .hero-pattern {
     position: absolute;
     inset: 0;
-    opacity: 0.04;
-    background-image: 
+    z-index: 2;
+    opacity: 0.025;
+    background-image:
       repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%),
       repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
     background-size: 30px 30px;
+    pointer-events: none;
+  }
+
+  /* Fallback bg if video fails */
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      linear-gradient(135deg, var(--deep) 0%, var(--warm) 40%, #3D2800 100%);
+    z-index: 0;
   }
 
   .hero-content {
     position: relative;
-    z-index: 2;
+    z-index: 10;
     text-align: center;
     max-width: 800px;
     padding: 0 40px;
@@ -299,6 +338,7 @@
     letter-spacing: 3px;
     text-transform: uppercase;
     animation: bounce 2s infinite;
+    z-index: 10;
   }
 
   .hero-scroll::after {
@@ -1149,8 +1189,30 @@
 
 <!-- HERO -->
 <section class="hero">
+
+  <!-- Fallback solid bg (shown instantly before video loads) -->
   <div class="hero-bg"></div>
+
+  <!-- VIDEO BACKGROUND — multiple sources for best browser compatibility -->
+  <div class="hero-video">
+    <video
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=1400&q=80"
+    >
+      <!-- Free-use jewellery / gold video from Pixabay CDN -->
+      <source src="https://cdn.pixabay.com/video/2020/05/14/38928-420429547_large.mp4" type="video/mp4">
+      <!-- Fallback: gold liquid / molten gold ambience -->
+      <source src="https://cdn.pixabay.com/video/2016/09/04/5180-181554168_large.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Diagonal gold shimmer pattern -->
   <div class="hero-pattern"></div>
+
   <div class="hero-content">
     <div class="hero-badge">Raidighi · West Bengal · Est. Since Years</div>
     <h1>Crafted With<br><em>Pure Gold</em></h1>
@@ -1162,6 +1224,7 @@
     </div>
   </div>
   <div class="hero-scroll">Scroll</div>
+
 </section>
 
 <!-- STATS -->
@@ -1583,5 +1646,34 @@
   📞
 </a>
 
+<script>
+  // Ensure video autoplays — handles strict browser autoplay policies
+  (function() {
+    var video = document.querySelector('.hero-video video');
+    if (!video) return;
+
+    // Force muted (required for autoplay in Chrome/Safari)
+    video.muted = true;
+    video.volume = 0;
+
+    var playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(function() {
+        // Autoplay blocked — show fallback poster image gracefully
+        video.style.display = 'none';
+        var fallback = document.querySelector('.hero-bg');
+        if (fallback) fallback.style.opacity = '1';
+      });
+    }
+
+    // On mobile: reduce video quality by forcing poster if connection is slow
+    if (navigator.connection) {
+      var conn = navigator.connection;
+      if (conn.effectiveType === '2g' || conn.saveData) {
+        video.style.display = 'none';
+      }
+    }
+  })();
+</script>
 </body>
 </html>
