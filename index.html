@@ -1,0 +1,1587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>New Shyama Jewellers | নিউ শ্যামা জুয়েলার্স</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-pale: #F8EDD3;
+    --deep: #1A1208;
+    --warm: #2D1F0A;
+    --cream: #FAF6EE;
+    --text: #3D2E14;
+    --muted: #8A7355;
+    --white: #FFFFFF;
+    --shadow: rgba(26,18,8,0.15);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Jost', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── ORNAMENT ── */
+  .ornament {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    justify-content: center;
+    margin: 8px 0;
+  }
+  .ornament::before, .ornament::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+  }
+  .ornament::after { background: linear-gradient(270deg, transparent, var(--gold)); }
+  .ornament span {
+    color: var(--gold);
+    font-size: 18px;
+  }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    background: var(--deep);
+    color: var(--gold-light);
+    text-align: center;
+    padding: 8px 20px;
+    font-size: 12px;
+    letter-spacing: 2px;
+    font-weight: 300;
+  }
+
+  /* ── NAV ── */
+  nav {
+    background: var(--white);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px var(--shadow);
+  }
+
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 80px;
+  }
+
+  .logo {
+    text-align: center;
+  }
+
+  .logo-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--deep);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  .logo-bengali {
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-top: 2px;
+  }
+
+  .logo-star {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 4px;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text);
+    text-decoration: none;
+    font-weight: 400;
+    transition: color 0.3s;
+    position: relative;
+  }
+
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    transition: width 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--deep);
+    color: var(--gold-light) !important;
+    padding: 10px 24px;
+    border-radius: 0;
+    letter-spacing: 2px;
+    font-size: 11px !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+
+  .nav-cta:hover {
+    background: var(--gold) !important;
+    color: var(--deep) !important;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 50% 40%, rgba(201,168,76,0.08) 0%, transparent 70%),
+      linear-gradient(135deg, var(--deep) 0%, var(--warm) 40%, #3D2800 100%);
+  }
+
+  .hero-pattern {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image: 
+      repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%),
+      repeating-linear-gradient(-45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%);
+    background-size: 30px 30px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 40px;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold-light);
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 8px 24px;
+    margin-bottom: 24px;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(52px, 8vw, 96px);
+    font-weight: 300;
+    color: var(--white);
+    line-height: 1.05;
+    margin-bottom: 8px;
+    letter-spacing: 2px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--gold-light);
+  }
+
+  .hero-bengali-title {
+    font-size: 20px;
+    color: rgba(232,201,122,0.7);
+    letter-spacing: 3px;
+    margin-bottom: 28px;
+    font-weight: 300;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 2px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .hero-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-gold {
+    background: var(--gold);
+    color: var(--deep);
+    padding: 16px 40px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-gold:hover {
+    background: var(--gold-light);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold-light);
+    padding: 16px 40px;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    display: inline-block;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.1);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.4);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    animation: bounce 2s infinite;
+  }
+
+  .hero-scroll::after {
+    content: '';
+    width: 1px;
+    height: 50px;
+    background: linear-gradient(var(--gold), transparent);
+    display: block;
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ── STATS ── */
+  .stats {
+    background: var(--deep);
+    padding: 48px 40px;
+  }
+
+  .stats-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.15);
+  }
+
+  .stat-item {
+    background: var(--deep);
+    text-align: center;
+    padding: 32px 24px;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    margin-top: 8px;
+    display: block;
+  }
+
+  /* ── SECTION HEADER ── */
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 300;
+    color: var(--deep);
+    line-height: 1.15;
+  }
+
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ── COLLECTIONS ── */
+  .collections {
+    padding: 100px 40px;
+    background: var(--cream);
+  }
+
+  .collections-inner { max-width: 1200px; margin: 0 auto; }
+
+  .collection-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 2px;
+  }
+
+  .collection-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--deep);
+  }
+
+  .collection-card:first-child {
+    grid-row: 1 / 3;
+  }
+
+  .collection-img {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+    display: block;
+    filter: brightness(0.7);
+  }
+
+  .collection-card:hover .collection-img {
+    transform: scale(1.05);
+    filter: brightness(0.5);
+  }
+
+  .collection-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(26,18,8,0.9) 0%, transparent 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 32px;
+    transition: all 0.4s;
+  }
+
+  .collection-tag {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 6px;
+  }
+
+  .collection-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+  }
+
+  .collection-card:first-child .collection-name { font-size: 40px; }
+
+  .collection-link {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-top: 12px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.4s;
+  }
+
+  .collection-card:hover .collection-link {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── FEATURED PRODUCTS ── */
+  .products {
+    padding: 100px 40px;
+    background: var(--white);
+  }
+
+  .products-inner { max-width: 1200px; margin: 0 auto; }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+  }
+
+  .product-card {
+    cursor: pointer;
+    transition: transform 0.4s;
+  }
+
+  .product-card:hover { transform: translateY(-8px); }
+
+  .product-img-wrap {
+    position: relative;
+    overflow: hidden;
+    background: var(--gold-pale);
+    aspect-ratio: 3/4;
+    margin-bottom: 20px;
+  }
+
+  .product-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s;
+  }
+
+  .product-card:hover .product-img { transform: scale(1.08); }
+
+  .product-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--deep);
+    color: var(--gold-light);
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 5px 12px;
+    text-transform: uppercase;
+  }
+
+  .product-quick {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--deep);
+    color: var(--gold-light);
+    text-align: center;
+    padding: 14px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transform: translateY(100%);
+    transition: transform 0.4s;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+    text-decoration: none;
+    display: block;
+  }
+
+  .product-card:hover .product-quick { transform: translateY(0); }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--deep);
+    margin-bottom: 6px;
+  }
+
+  .product-material {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+
+  .product-price {
+    font-size: 14px;
+    color: var(--gold);
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  /* ── WHY US ── */
+  .why-us {
+    padding: 100px 40px;
+    background: var(--deep);
+  }
+
+  .why-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .why-header { margin-bottom: 64px; text-align: center; }
+  .why-header .section-tag { color: rgba(201,168,76,0.7); }
+  .why-header .section-title { color: var(--white); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(201,168,76,0.1);
+  }
+
+  .why-item {
+    background: var(--deep);
+    padding: 48px 32px;
+    text-align: center;
+    transition: background 0.3s;
+  }
+
+  .why-item:hover { background: rgba(201,168,76,0.05); }
+
+  .why-icon {
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 24px;
+  }
+
+  .why-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .why-text {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.8;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── ABOUT STRIP ── */
+  .about-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+
+  .about-img {
+    position: relative;
+    overflow: hidden;
+    background: var(--warm);
+  }
+
+  .about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: sepia(20%) brightness(0.8);
+  }
+
+  .about-img-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(201,168,76,0.2) 0%, transparent 50%);
+  }
+
+  .about-content {
+    background: var(--cream);
+    padding: 80px 80px 80px 72px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .about-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 38px;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--deep);
+    line-height: 1.3;
+    margin-bottom: 24px;
+  }
+
+  .about-text {
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 2;
+    margin-bottom: 20px;
+  }
+
+  .about-location {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+
+  .about-location::before {
+    content: '📍';
+    font-size: 16px;
+  }
+
+  .rating-block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding-top: 24px;
+  }
+
+  .rating-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    color: var(--gold);
+    line-height: 1;
+  }
+
+  .rating-stars {
+    color: var(--gold);
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+
+  .rating-label {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 1px;
+  }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials {
+    padding: 100px 40px;
+    background: var(--white);
+  }
+
+  .testimonials-inner { max-width: 1100px; margin: 0 auto; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+
+  .testimonial-card {
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 40px 32px;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .testimonial-card:hover {
+    border-color: rgba(201,168,76,0.5);
+    transform: translateY(-4px);
+  }
+
+  .testimonial-card::before {
+    content: '\201C';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 80px;
+    color: var(--gold-pale);
+    line-height: 1;
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    pointer-events: none;
+  }
+
+  .testimonial-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-style: italic;
+    color: var(--text);
+    line-height: 1.7;
+    margin-bottom: 24px;
+    padding-top: 24px;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .testimonial-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--gold-pale);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    font-weight: 600;
+    flex-shrink: 0;
+  }
+
+  .testimonial-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--deep);
+  }
+
+  .testimonial-stars {
+    color: var(--gold);
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* ── MAP / LOCATION ── */
+  .location-section {
+    padding: 80px 40px;
+    background: var(--cream);
+  }
+
+  .location-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .location-info { }
+
+  .location-info .section-tag { text-align: left; display: block; margin-bottom: 8px; }
+  .location-info .section-title { text-align: left; margin-bottom: 32px; }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .contact-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--gold-pale);
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  .contact-label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+
+  .contact-value {
+    font-size: 15px;
+    color: var(--text);
+    line-height: 1.5;
+  }
+
+  .map-embed {
+    border: 1px solid rgba(201,168,76,0.2);
+    overflow: hidden;
+    height: 380px;
+    background: var(--gold-pale);
+    position: relative;
+  }
+
+  .map-embed iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  /* ── SOCIAL STRIP ── */
+  .social-strip {
+    background: var(--deep);
+    padding: 48px 40px;
+    text-align: center;
+  }
+
+  .social-inner { max-width: 600px; margin: 0 auto; }
+
+  .social-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--white);
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+
+  .social-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 1px;
+    margin-bottom: 32px;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .social-btn {
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--gold-light);
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+  }
+
+  .social-btn:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--deep);
+    transform: translateY(-3px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--warm);
+    padding: 60px 40px 32px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+
+  .footer-logo-main {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--gold-light);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .footer-logo-bengali {
+    font-size: 14px;
+    color: rgba(232,201,122,0.6);
+    margin-bottom: 16px;
+  }
+
+  .footer-tagline {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.8;
+  }
+
+  .footer-col-title {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .footer-links {
+    list-style: none;
+  }
+
+  .footer-links li {
+    margin-bottom: 10px;
+  }
+
+  .footer-links a {
+    font-size: 13px;
+    color: rgba(255,255,255,0.4);
+    text-decoration: none;
+    transition: color 0.3s;
+    letter-spacing: 0.5px;
+  }
+
+  .footer-links a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(201,168,76,0.1);
+    padding-top: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy {
+    font-size: 12px;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.5px;
+  }
+
+  .footer-copy span { color: var(--gold); }
+
+  /* ── WHATSAPP BUTTON ── */
+  .whatsapp-btn {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 60px;
+    height: 60px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    transition: all 0.3s;
+  }
+
+  .whatsapp-btn:hover {
+    transform: scale(1.1) translateY(-4px);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.6);
+  }
+
+  .whatsapp-btn svg {
+    width: 30px;
+    height: 30px;
+    fill: white;
+  }
+
+  .whatsapp-tooltip {
+    position: absolute;
+    right: 70px;
+    background: var(--deep);
+    color: var(--white);
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .whatsapp-btn:hover .whatsapp-tooltip { opacity: 1; }
+
+  /* ── CALL BUTTON ── */
+  .call-btn {
+    position: fixed;
+    bottom: 104px;
+    right: 32px;
+    width: 60px;
+    height: 60px;
+    background: var(--gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+    transition: all 0.3s;
+    font-size: 24px;
+  }
+
+  .call-btn:hover {
+    transform: scale(1.1) translateY(-4px);
+    background: var(--gold-light);
+    box-shadow: 0 8px 30px rgba(201,168,76,0.6);
+  }
+
+  .call-tooltip {
+    position: absolute;
+    right: 70px;
+    background: var(--deep);
+    color: var(--white);
+    font-size: 12px;
+    letter-spacing: 1px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+
+  .call-btn:hover .call-tooltip { opacity: 1; }
+
+  /* ── JEWELRY SHOWCASE SVG ── */
+  .jewelry-showcase {
+    padding: 80px 40px;
+    background: var(--gold-pale);
+    text-align: center;
+    overflow: hidden;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .collection-grid { grid-template-columns: 1fr 1fr; }
+    .collection-card:first-child { grid-row: auto; }
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+    .stats-inner { grid-template-columns: repeat(2, 1fr); }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .about-strip { grid-template-columns: 1fr; }
+    .about-img { min-height: 300px; }
+    .about-content { padding: 48px 32px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .location-inner { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 600px) {
+    .nav-inner { padding: 0 20px; }
+    .hero-content { padding: 0 20px; }
+    .products-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+    .collection-grid { grid-template-columns: 1fr; }
+    .stats-inner { grid-template-columns: 1fr 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; }
+    .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">⬥ &nbsp; Raidighi Bridge, Kankandighi, Raidighi, West Bengal &nbsp; | &nbsp; Open Daily Until 10 PM &nbsp; | &nbsp; Call: 097335 01538 &nbsp; ⬥</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-links">
+      <li><a href="#collections">Collections</a></li>
+      <li><a href="#products">Jewellery</a></li>
+      <li><a href="#about">About</a></li>
+    </ul>
+    <div class="logo">
+      <div class="logo-main">New Shyama Jewellers</div>
+      <div class="logo-bengali">নিউ শ্যামা জুয়েলার্স</div>
+      <div class="logo-star">⬥ &nbsp; ⬥ &nbsp; ⬥</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="tel:09733501538" class="nav-cta">Visit Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Raidighi · West Bengal · Est. Since Years</div>
+    <h1>Crafted With<br><em>Pure Gold</em></h1>
+    <div class="hero-bengali-title">বিশ্বস্ত সোনার দোকান</div>
+    <p class="hero-sub">⬥ &nbsp; Timeless Jewellery for Every Occasion &nbsp; ⬥</p>
+    <div class="hero-buttons">
+      <a href="#collections" class="btn-gold">Explore Collections</a>
+      <a href="https://wa.me/919733501538?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20your%20jewellery" target="_blank" class="btn-outline">WhatsApp Us</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">5.0</span>
+      <span class="stat-label">★ Google Rating</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">22+</span>
+      <span class="stat-label">Happy Reviews</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">100%</span>
+      <span class="stat-label">Pure Gold</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">∞</span>
+      <span class="stat-label">Trust & Quality</span>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="collections" id="collections">
+  <div class="collections-inner">
+    <div class="section-header">
+      <span class="section-tag">Our Finest</span>
+      <h2 class="section-title">Curated <em>Collections</em></h2>
+      <div class="ornament"><span>⬥</span></div>
+    </div>
+    <div class="collection-grid">
+
+      <!-- LARGE LEFT -->
+      <div class="collection-card">
+        <img class="collection-img" 
+          src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=800&q=80" 
+          alt="Gold Necklace Collection" loading="lazy">
+        <div class="collection-overlay">
+          <span class="collection-tag">Featured</span>
+          <span class="collection-name">Gold Necklace<br>Collection</span>
+          <a href="#products" class="collection-link">View All →</a>
+        </div>
+      </div>
+
+      <!-- TOP RIGHT 1 -->
+      <div class="collection-card">
+        <img class="collection-img" 
+          src="https://images.unsplash.com/photo-1573408301185-9519f94b2b2a?w=600&q=80" 
+          alt="Bangles & Kara" loading="lazy" style="min-height:220px">
+        <div class="collection-overlay">
+          <span class="collection-tag">Traditional</span>
+          <span class="collection-name">Bangles & Kara</span>
+          <a href="#products" class="collection-link">View All →</a>
+        </div>
+      </div>
+
+      <!-- TOP RIGHT 2 -->
+      <div class="collection-card">
+        <img class="collection-img" 
+          src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=600&q=80" 
+          alt="Rings & Rings" loading="lazy" style="min-height:220px">
+        <div class="collection-overlay">
+          <span class="collection-tag">Bridal</span>
+          <span class="collection-name">Wedding Rings</span>
+          <a href="#products" class="collection-link">View All →</a>
+        </div>
+      </div>
+
+      <!-- BOTTOM RIGHT 1 -->
+      <div class="collection-card">
+        <img class="collection-img" 
+          src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80" 
+          alt="Jhumko Collection" loading="lazy" style="min-height:220px">
+        <div class="collection-overlay">
+          <span class="collection-tag">Popular</span>
+          <span class="collection-name">Jhumko Earrings</span>
+          <a href="#products" class="collection-link">View All →</a>
+        </div>
+      </div>
+
+      <!-- BOTTOM RIGHT 2 -->
+      <div class="collection-card">
+        <img class="collection-img" 
+          src="https://images.unsplash.com/photo-1506630448388-4e683c67ddb0?w=600&q=80" 
+          alt="Gold Chains" loading="lazy" style="min-height:220px">
+        <div class="collection-overlay">
+          <span class="collection-tag">Everyday</span>
+          <span class="collection-name">Gold Chains</span>
+          <a href="#products" class="collection-link">View All →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="products" id="products">
+  <div class="products-inner">
+    <div class="section-header">
+      <span class="section-tag">Handpicked For You</span>
+      <h2 class="section-title">Featured <em>Pieces</em></h2>
+      <div class="ornament"><span>⬥</span></div>
+    </div>
+    <div class="products-grid">
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <span class="product-badge">Bestseller</span>
+          <img class="product-img" src="https://images.unsplash.com/photo-1608042314453-ae338d80c427?w=500&q=80" alt="Gold Jhumko" loading="lazy">
+          <a href="https://wa.me/919733501538?text=I'm+interested+in+Gold+Jhumko" target="_blank" class="product-quick">Enquire Now</a>
+        </div>
+        <div class="product-name">Temple Jhumko</div>
+        <div class="product-material">22K Gold · Traditional</div>
+        <div class="product-price">₹ On Request</div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <span class="product-badge">Bridal</span>
+          <img class="product-img" src="https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=500&q=80" alt="Necklace Set" loading="lazy">
+          <a href="https://wa.me/919733501538?text=I'm+interested+in+Bridal+Necklace+Set" target="_blank" class="product-quick">Enquire Now</a>
+        </div>
+        <div class="product-name">Bridal Necklace Set</div>
+        <div class="product-material">22K Gold · Premium</div>
+        <div class="product-price">₹ On Request</div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <img class="product-img" src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?w=500&q=80" alt="Gold Bangles" loading="lazy">
+          <a href="https://wa.me/919733501538?text=I'm+interested+in+Gold+Bangles" target="_blank" class="product-quick">Enquire Now</a>
+        </div>
+        <div class="product-name">Classic Gold Bangles</div>
+        <div class="product-material">22K Gold · Pair</div>
+        <div class="product-price">₹ On Request</div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img-wrap">
+          <span class="product-badge">New</span>
+          <img class="product-img" src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=500&q=80" alt="Diamond Ring" loading="lazy">
+          <a href="https://wa.me/919733501538?text=I'm+interested+in+Engagement+Ring" target="_blank" class="product-quick">Enquire Now</a>
+        </div>
+        <div class="product-name">Solitaire Ring</div>
+        <div class="product-material">18K Gold · Diamond</div>
+        <div class="product-price">₹ On Request</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="why-us">
+  <div class="why-inner">
+    <div class="why-header">
+      <span class="section-tag">Why Choose Us</span>
+      <h2 class="section-title" style="color:var(--white)">The <em>Shyama</em> Promise</h2>
+      <div class="ornament" style="color:var(--gold)"><span>⬥</span></div>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">💎</div>
+        <div class="why-title">Certified Gold</div>
+        <p class="why-text">Every piece is hallmarked and certified for purity. We deal only in 22K and 18K certified gold jewellery.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">🏆</div>
+        <div class="why-title">5 Star Rated</div>
+        <p class="why-text">Trusted by hundreds of families in Raidighi with a perfect 5.0 Google rating and 22+ verified reviews.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💰</div>
+        <div class="why-title">Best Price</div>
+        <p class="why-text">Competitive pricing with no hidden charges. We offer the most reasonable gold price in the region.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">✨</div>
+        <div class="why-title">Huge Collection</div>
+        <p class="why-text">Thousands of designs from traditional Bengali to modern styles — rings, necklaces, jhumko, chains, bangles and more.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-strip" id="about">
+  <div class="about-img">
+    <img src="https://images.unsplash.com/photo-1608042314453-ae338d80c427?w=900&q=80" alt="Shop Interior">
+    <div class="about-img-overlay"></div>
+  </div>
+  <div class="about-content">
+    <span class="section-tag" style="text-align:left;display:block;margin-bottom:8px">Our Story</span>
+    <blockquote class="about-quote">"Where tradition meets timeless elegance"</blockquote>
+    <p class="about-text">New Shyama Jewellers is the most trusted gold jewellery shop in Raidighi, West Bengal. We take pride in offering a vast collection of gold jewellery at the most reasonable prices.</p>
+    <p class="about-text">From bridal sets to everyday wear, from traditional jhumko to modern solitaires — our shop has something for every occasion and every budget.</p>
+    <div class="about-location">Raidighi Bridge, Kankandighi, Raidighi, WB 743383 &nbsp; · &nbsp; Open until 10 PM</div>
+    <div class="rating-block">
+      <div class="rating-num">5.0</div>
+      <div>
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-label">22 Verified Google Reviews</div>
+        <div style="font-size:12px;color:var(--muted);margin-top:4px">"Huge collection. Very reasonable prices."</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="testimonials-inner">
+    <div class="section-header">
+      <span class="section-tag">Customer Love</span>
+      <h2 class="section-title">What People <em>Say</em></h2>
+      <div class="ornament"><span>⬥</span></div>
+    </div>
+    <div class="testimonials-grid">
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">So much huge collection of gold jewellery in this shop and the gold price is very reasonable.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SK</div>
+          <div>
+            <div class="testimonial-name">Santanu Kayal</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Nice place, beautiful ambience and the product is very reasonable. Highly recommended!</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">PD</div>
+          <div>
+            <div class="testimonial-name">Poulami Das</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card">
+        <p class="testimonial-text">Very nice jhumko collection! Best quality gold jewellery with the most trustworthy service in Raidighi.</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">BD</div>
+          <div>
+            <div class="testimonial-name">Babusona Dhali</div>
+            <div class="testimonial-stars">★★★★★</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION & CONTACT -->
+<section class="location-section" id="contact">
+  <div class="location-inner">
+    <div class="location-info">
+      <span class="section-tag">Find Us</span>
+      <h2 class="section-title">Visit Our <em>Store</em></h2>
+      <div class="ornament" style="justify-content:flex-start;margin:0 0 32px;"><span>⬥</span></div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Address</div>
+          <div class="contact-value">Raidighi Bridge, Kankandighi<br>Raidighi, West Bengal 743383</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value"><a href="tel:09733501538" style="color:var(--text);text-decoration:none">097335 01538</a></div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Hours</div>
+          <div class="contact-value">Open Daily · Closes 10 PM</div>
+        </div>
+      </div>
+
+      <div class="contact-item">
+        <div class="contact-icon">💬</div>
+        <div>
+          <div class="contact-label">WhatsApp</div>
+          <div class="contact-value">
+            <a href="https://wa.me/919733501538?text=Hello%2C+I'd+like+to+enquire+about+your+jewellery" target="_blank" style="color:var(--gold);text-decoration:none;font-weight:500">Chat with us instantly →</a>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px;">
+        <a href="https://wa.me/919733501538" target="_blank" class="btn-gold" style="font-size:11px;padding:12px 24px">WhatsApp Enquiry</a>
+        <a href="tel:09733501538" class="btn-outline" style="font-size:11px;padding:12px 24px;border-color:rgba(201,168,76,0.4);color:var(--gold)">Call Now</a>
+      </div>
+    </div>
+
+    <div class="map-embed">
+      <iframe 
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.0!2d88.4!3d22.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sNew+Shyama+Jewellers+Raidighi!5e0!3m2!1sen!2sin!4v1234567890"
+        allowfullscreen="" 
+        loading="lazy"
+        title="New Shyama Jewellers Location">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL STRIP -->
+<section class="social-strip">
+  <div class="social-inner">
+    <h2 class="social-title">Follow Our Journey</h2>
+    <p class="social-sub">Stay updated with our latest collections and offers</p>
+    <div class="social-icons">
+
+      <a href="https://wa.me/919733501538" target="_blank" class="social-btn" title="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.facebook.com" target="_blank" class="social-btn" title="Facebook">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.instagram.com" target="_blank" class="social-btn" title="Instagram">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+
+      <a href="https://maps.google.com/?q=New+Shyama+Jewellers+Raidighi" target="_blank" class="social-btn" title="Google Maps">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+          <path d="M12 0C7.802 0 4 3.403 4 7.602 4 11.8 7.469 16.812 12 24c4.531-7.188 8-12.2 8-16.398C20 3.403 16.199 0 12 0zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"/>
+        </svg>
+      </a>
+
+      <a href="https://www.youtube.com" target="_blank" class="social-btn" title="YouTube">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22">
+          <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/>
+        </svg>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo-main">New Shyama Jewellers</div>
+        <div class="footer-logo-bengali">নিউ শ্যামা জুয়েলার্স</div>
+        <p class="footer-tagline">Your most trusted gold jewellery shop in Raidighi, West Bengal. Committed to quality, tradition and the finest craftsmanship.</p>
+      </div>
+      <div>
+        <span class="footer-col-title">Collections</span>
+        <ul class="footer-links">
+          <li><a href="#collections">Gold Necklaces</a></li>
+          <li><a href="#collections">Jhumko Earrings</a></li>
+          <li><a href="#collections">Bangles & Kara</a></li>
+          <li><a href="#collections">Wedding Rings</a></li>
+          <li><a href="#collections">Gold Chains</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-title">Quick Links</span>
+        <ul class="footer-links">
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#reviews">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://wa.me/919733501538" target="_blank">WhatsApp</a></li>
+          <li><a href="https://maps.google.com/?q=New+Shyama+Jewellers+Raidighi" target="_blank">Directions</a></li>
+        </ul>
+      </div>
+      <div>
+        <span class="footer-col-title">Contact</span>
+        <ul class="footer-links">
+          <li><a href="tel:09733501538">📞 097335 01538</a></li>
+          <li><a href="https://wa.me/919733501538" target="_blank">💬 WhatsApp Us</a></li>
+          <li style="color:rgba(255,255,255,0.35);font-size:13px;margin-top:4px">Raidighi Bridge,<br>Kankandighi, Raidighi<br>West Bengal 743383</li>
+          <li style="color:rgba(255,255,255,0.35);font-size:13px;margin-top:8px">Open Daily · Until 10 PM</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 <span>New Shyama Jewellers</span>. All rights reserved.</p>
+      <p class="footer-copy">Crafted with <span>♥</span> in Raidighi, West Bengal</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOATING BUTTON -->
+<a href="https://wa.me/919733501538?text=Hello%2C%20I%27d%20like%20to%20enquire%20about%20your%20jewellery%20collection" 
+   target="_blank" 
+   class="whatsapp-btn"
+   title="Chat on WhatsApp">
+  <span class="whatsapp-tooltip">Chat with us</span>
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+  </svg>
+</a>
+
+<!-- CALL FLOATING BUTTON -->
+<a href="tel:09733501538" class="call-btn" title="Call Us">
+  <span class="call-tooltip">Call Now</span>
+  📞
+</a>
+
+</body>
+</html>
